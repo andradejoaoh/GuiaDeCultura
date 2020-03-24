@@ -8,12 +8,11 @@
 
 import UIKit
 
-class TableViewControllerEventos: UITableViewController, UISearchBarDelegate{
+class EventsViewController: UITableViewController, UISearchBarDelegate{
     
     var userData:String = "a"
     var searchResults : [(Event)] = []
     var events : [(Event)] = []
-    var gerenciador = FileController()
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchResults = events.filter({ (aPlace) -> Bool in
@@ -22,7 +21,7 @@ class TableViewControllerEventos: UITableViewController, UISearchBarDelegate{
         tableView.reloadData()
         
         if searchBar.text == "" {
-            searchResults = gerenciador.vetorEventos
+            searchResults = JSONHandler.shared.vetorEventos
             tableView.reloadData()
         }
     }
@@ -54,14 +53,14 @@ class TableViewControllerEventos: UITableViewController, UISearchBarDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         createSearchBar()
-        searchResults = gerenciador.vetorEventos
+        searchResults = JSONHandler.shared.vetorEventos
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        gerenciador.testeAPI { (events, error) in
+        JSONHandler.shared.testeAPI { (events, error) in
             guard error == nil else {
                 print("Erro na busca WEB!!!")
                 return
@@ -85,7 +84,7 @@ class TableViewControllerEventos: UITableViewController, UISearchBarDelegate{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellEventos = self.tableView.dequeueReusableCell(withIdentifier: "cellEventos", for: indexPath) as! CelulaEventos
+        let cellEventos = self.tableView.dequeueReusableCell(withIdentifier: "cellEventos", for: indexPath) as! EventCell
 
         cellEventos.nomeEvento?.text = searchResults[indexPath.row].nome.trimmingCharacters(in: CharacterSet(charactersIn: " "))
         cellEventos.dataEvento?.text = searchResults[indexPath.row].data
@@ -97,11 +96,8 @@ class TableViewControllerEventos: UITableViewController, UISearchBarDelegate{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        (segue.destination as! NavigationControllerEventos).eventos = searchResults[tableView.indexPathForSelectedRow!.row]
+        (segue.destination as! EventViewController).eventos = searchResults[tableView.indexPathForSelectedRow!.row]
     }
-    //"https://api.predicthq.com/v1/events/?q=&categories=concerts,festivals,performing-arts&ranks=level3,level4,level5&&country=BR&date=next30days&places=3448433,6324358
-    // location_around.origin=-23.5505,-46.6333&location_around.offset=10km
-    
 }
 
    

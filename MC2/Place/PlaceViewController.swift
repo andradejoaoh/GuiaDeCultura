@@ -31,14 +31,7 @@ class DescricaoLocalViewController: UIViewController {
             localizaoLocal.text = centro.location
             horarioDeFuncLocal.text = centro.horarioFuncionamento
             descricaoLocal.text = centro.description
-            
-            
-            
         }
-    
-        
     }
-
-
 }
 

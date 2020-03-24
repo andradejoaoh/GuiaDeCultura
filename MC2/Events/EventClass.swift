@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class  Event {
+class Event {
     
     var nome : String
     var data : String

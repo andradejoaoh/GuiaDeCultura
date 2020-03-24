@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NavigationControllerEventos: UIViewController {
+class EventViewController: UIViewController {
     
     public var eventos : Event?
     

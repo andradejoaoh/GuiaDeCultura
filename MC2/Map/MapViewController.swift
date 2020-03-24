@@ -10,11 +10,10 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapaViewController: UIViewController {
+class MapViewController: UIViewController {
     @IBOutlet weak var map: MKMapView!
     
     var locManager:CLLocationManager!
-    var gerenciador = FileController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,17 +33,17 @@ class MapaViewController: UIViewController {
         map.showsUserLocation = true
         map.showsCompass = true
 
-        gerenciador.lerArquivoCentros()
+        JSONHandler.shared.lerArquivoCentros()
         
-        for i in 0..<gerenciador.vetorCentros.count{
-            let address = gerenciador.vetorCentros[i].location
+        for i in 0..<JSONHandler.shared.vetorCentros.count{
+            let address = JSONHandler.shared.vetorCentros[i].location
             let geoCoder = CLGeocoder()
             geoCoder.geocodeAddressString(address) { (placemarks, error) in
                 guard let placemarks = placemarks, let location = placemarks.first?.location else {
                         return
                 }
                 let marker = MKPointAnnotation()
-                marker.title = self.gerenciador.vetorCentros[i].name
+                marker.title = JSONHandler.shared.vetorCentros[i].name
                 marker.coordinate = location.coordinate
                 self.map.addAnnotation(marker)
             }
