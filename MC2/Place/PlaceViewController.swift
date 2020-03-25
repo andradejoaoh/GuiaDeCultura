@@ -10,7 +10,7 @@ import UIKit
 
 class DescricaoLocalViewController: UIViewController {
     
-    public var centro : Places?
+    var centro : Place?
  
     @IBOutlet weak var topBar: UINavigationItem!
     @IBOutlet weak var imagemLocal: UIImageView!
@@ -29,7 +29,7 @@ class DescricaoLocalViewController: UIViewController {
             imagemLocal.image = UIImage(named: "\(centro.name.trimmingCharacters(in: CharacterSet(charactersIn: " "))).jpg")
             tituloLocal.text = centro.name
             localizaoLocal.text = centro.location
-            horarioDeFuncLocal.text = centro.horarioFuncionamento
+            horarioDeFuncLocal.text = centro.activeTime
             descricaoLocal.text = centro.description
         }
     }

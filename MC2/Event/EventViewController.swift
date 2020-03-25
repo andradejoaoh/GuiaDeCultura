@@ -35,7 +35,6 @@ class EventViewController: UIViewController {
             horarioEvento.text = eventos.horario
             localizacaoEvento.text = eventos.local
             descricaoEvento.text = eventos.descricao
-            
         }
         
     }

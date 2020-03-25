@@ -11,7 +11,7 @@ import UIKit
 //LUGARES
 class PlacesViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate{
     
-    var searchResults : [(Places)] = []
+    var searchResults : [(Place)] = []
     
     @IBOutlet var tableView: UITableView!
     
@@ -47,7 +47,7 @@ class PlacesViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         let searchBar = UISearchBar()
         searchBar.showsCancelButton = true
-        searchBar.placeholder = "Buscar lugar"
+        searchBar.placeholder = "Buscar lugares"
         searchBar.delegate = self
         searchBar.tintColor = #colorLiteral(red: 1, green: 0.1719938815, blue: 0.424487114, alpha: 1)
         self.navigationItem.titleView = searchBar

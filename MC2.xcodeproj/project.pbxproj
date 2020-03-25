@@ -12,7 +12,7 @@
 		614F51FB242A91F900828D46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 614F51FA242A91F900828D46 /* Main.storyboard */; };
 		7505FFB722849F0800BA2152 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505FFB622849F0800BA2152 /* PlaceCell.swift */; };
 		7505FFBA2284F33F00BA2152 /* JSONHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505FFB82284F33F00BA2152 /* JSONHandler.swift */; };
-		7505FFBB2284F33F00BA2152 /* PlacesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505FFB92284F33F00BA2152 /* PlacesClass.swift */; };
+		7505FFBB2284F33F00BA2152 /* PlaceClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505FFB92284F33F00BA2152 /* PlaceClass.swift */; };
 		7505FFBF2285060900BA2152 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7505FFBE2285060900BA2152 /* MapViewController.swift */; };
 		75448C28228B289E002D1916 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75448C27228B289E002D1916 /* EventsViewController.swift */; };
 		75448C2A228B2A92002D1916 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75448C29228B2A92002D1916 /* EventCell.swift */; };
@@ -30,7 +30,7 @@
 		614F51FA242A91F900828D46 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7505FFB622849F0800BA2152 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		7505FFB82284F33F00BA2152 /* JSONHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONHandler.swift; sourceTree = "<group>"; };
-		7505FFB92284F33F00BA2152 /* PlacesClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesClass.swift; sourceTree = "<group>"; };
+		7505FFB92284F33F00BA2152 /* PlaceClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceClass.swift; sourceTree = "<group>"; };
 		7505FFBE2285060900BA2152 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		75448C27228B289E002D1916 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		75448C29228B2A92002D1916 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 		614F51FC242A9B5B00828D46 /* Places */ = {
 			isa = PBXGroup;
 			children = (
-				7505FFB92284F33F00BA2152 /* PlacesClass.swift */,
+				7505FFB92284F33F00BA2152 /* PlaceClass.swift */,
 				75E82E7B228462060095BDAF /* PlacesViewController.swift */,
 				7505FFB622849F0800BA2152 /* PlaceCell.swift */,
 			);
@@ -118,7 +118,6 @@
 		75E82E64228460230095BDAF /* MC2 */ = {
 			isa = PBXGroup;
 			children = (
-				6103CCFE22985B03007F7113 /* Assets.xcassets */,
 				75E82E65228460230095BDAF /* AppDelegate.swift */,
 				7505FFB82284F33F00BA2152 /* JSONHandler.swift */,
 				61168B872295EA39008C74C6 /* PredictHQResult.swift */,
@@ -130,6 +129,7 @@
 				614F51FA242A91F900828D46 /* Main.storyboard */,
 				75E82E6E228460240095BDAF /* LaunchScreen.storyboard */,
 				75E82E71228460240095BDAF /* Info.plist */,
+				6103CCFE22985B03007F7113 /* Assets.xcassets */,
 			);
 			path = MC2;
 			sourceTree = "<group>";
@@ -216,7 +216,7 @@
 				75E82E66228460230095BDAF /* AppDelegate.swift in Sources */,
 				75E82E7C228462060095BDAF /* PlacesViewController.swift in Sources */,
 				7505FFBA2284F33F00BA2152 /* JSONHandler.swift in Sources */,
-				7505FFBB2284F33F00BA2152 /* PlacesClass.swift in Sources */,
+				7505FFBB2284F33F00BA2152 /* PlaceClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

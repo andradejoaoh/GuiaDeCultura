@@ -25,5 +25,16 @@ class EventCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-
+    
+    override var frame: CGRect {
+        get {
+            return super.frame
+        }
+        set (newFrame) {
+            var frame =  newFrame
+            frame.origin.y += 4
+            frame.size.height -= 2 * 5
+            super.frame = frame
+        }
+    }
 }

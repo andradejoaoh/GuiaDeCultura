@@ -10,25 +10,19 @@ import Foundation
 
 class JSONHandler{
     static let shared = JSONHandler()
-
-    var vetorCentros = [Places]()
+    
+    var vetorCentros = [Place]()
     var vetorEventos = [Event]()
     private init() { }
-    
-    
+        
     public func lerArquivoCentros(){
-        if let pathCentrosCulturais = URL(string: "https://raw.githubusercontent.com/wiki/andradejoaoh/GuiaDeCultura/centrosCulturais.txt"){
-            do {
-                let conteudoCentrosCulturais = try String(contentsOf: pathCentrosCulturais, encoding: .utf8)
-                let vetorCentroCulturais = conteudoCentrosCulturais.split(separator: ";")
-                let numeroDeCentros = vetorCentroCulturais.count/4
-                
-                for i in 0..<numeroDeCentros {
-                    let local = Places(nome: String(vetorCentroCulturais[i*4]), descricao: String(vetorCentroCulturais[i*4+1]), local: String(vetorCentroCulturais[i*4+2]), horFunc: String(vetorCentroCulturais[i*4+3]))
-                    vetorCentros.append(local)
-                }
-            }
-            catch {/* error handling here */}
+        guard let pathCentrosCulturais = URL(string: "https://raw.githubusercontent.com/wiki/andradejoaoh/GuiaDeCultura/places.json") else { return }
+        do {
+            let conteudoCentrosCulturais = try Data(contentsOf: pathCentrosCulturais)
+            vetorCentros = try JSONDecoder().decode([Place].self, from: conteudoCentrosCulturais)
+        }
+        catch {
+            print("Error: \(error)")
         }
     }
     
@@ -95,8 +89,8 @@ class JSONHandler{
             }catch{
                 completion([], error)
             }
-
-            }.resume()
+            
+        }.resume()
     }
 }
 
