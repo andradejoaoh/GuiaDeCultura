@@ -58,7 +58,7 @@ class EventsViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         searchBar.showsCancelButton = true
         searchBar.placeholder = "Buscar eventos"
         searchBar.delegate = self
-        searchBar.tintColor = #colorLiteral(red: 1, green: 0.1719938815, blue: 0.424487114, alpha: 1)
+        searchBar.tintColor = #colorLiteral(red: 0.9846405387, green: 0.4090380967, blue: 0.2428246439, alpha: 1)
         self.navigationItem.titleView = searchBar
     }
     
