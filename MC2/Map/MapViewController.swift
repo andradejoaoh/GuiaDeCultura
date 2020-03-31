@@ -11,19 +11,16 @@ import MapKit
 import CoreLocation
 
 class MapViewController: UIViewController {
+    
     @IBOutlet weak var map: MKMapView!
     
-    var locManager:CLLocationManager!
-    
+    let locationManager = CLLocationManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        locManager = CLLocationManager()
-        
-        if CLLocationManager.authorizationStatus() == .notDetermined {
-            locManager.requestWhenInUseAuthorization()
-        }
+        checkLocationServices()
         
         map.userTrackingMode = .follow
         map.mapType = MKMapType.standard
@@ -50,4 +47,31 @@ class MapViewController: UIViewController {
             
         }
     }
+    func checkLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
+            checkLocationAuthorization()
+        } else {
+            // Show alert letting the user know they have to turn this on.
+        }
+    }
+    
+    func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse:
+            map.showsUserLocation = true
+        // For these case, you need to show a pop-up telling users what's up and how to turn on permisneeded if needed
+        case .denied:
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            map.showsUserLocation = true
+        case .restricted:
+            break
+        case .authorizedAlways:
+            break
+        @unknown default:
+            fatalError()
+        }
+    }
+    
 }

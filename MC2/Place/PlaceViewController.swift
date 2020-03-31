@@ -8,12 +8,13 @@
 
 import UIKit
 import SafariServices
+import CoreLocation
+import MapKit
 
 class DescricaoLocalViewController: UIViewController {
     
     var centro : Place?
  
-    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var imagemLocal: UIImageView!
     @IBOutlet weak var tituloLocal: UILabel!
     @IBOutlet weak var localizaoLocal: UILabel!
@@ -21,6 +22,7 @@ class DescricaoLocalViewController: UIViewController {
     @IBOutlet weak var descricaoLocal: UILabel!
     @IBOutlet weak var readMoreButton: UIButton!
     @IBOutlet weak var seeMapButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,7 @@ class DescricaoLocalViewController: UIViewController {
             localizaoLocal.text = centro.location
             horarioDeFuncLocal.text = centro.activeTime
             descricaoLocal.text = centro.description
-            contentView.layer.cornerRadius = 24
+            scrollView.layer.cornerRadius = 24
         }
         readMoreButton.layer.cornerRadius = 6
         seeMapButton.layer.cornerRadius = 6
@@ -46,8 +48,21 @@ class DescricaoLocalViewController: UIViewController {
     }
     
     @IBAction func seeOnMap(_ sender: Any) {
-        
+        performSegue(withIdentifier: "fromPlaceToMap", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let mapViewController = segue.destination as? MapViewController else { return }
+        if let address = self.centro?.location {
+                let geoCoder = CLGeocoder()
+                geoCoder.geocodeAddressString(address) { (placemarks, error) in
+                    guard let placemarks = placemarks, let location = placemarks.first?.location else {
+                            return
+                    }
+                    let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 400, longitudinalMeters: 400)
+                    mapViewController.map.setRegion(region, animated: false)
+            }
+        }
+    }
 }
 
